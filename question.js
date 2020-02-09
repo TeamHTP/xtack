@@ -34,9 +34,9 @@ var comment = new Vue({
   methods: {
     submit: function () {
       if (comment.text && comment.text.length !== 0) {
-        getApi('', '', function (data, status) {
+        postApi(`/question/${location.hash.substring(1)}/answer`, `body=${comment.text}`, function (data, status) {
           if (status === 200) {
-
+            location.reload();
           }
         });
       }
@@ -52,7 +52,7 @@ var comments = new Vue({
   created: function () {
     getApi('', '', function (data, status) {
       if (status === 200) {
-
+        
       }
     });
   },
