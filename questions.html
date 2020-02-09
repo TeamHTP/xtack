@@ -8,6 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./bootstrap-color-brand.css">
 
   <style>
     button,
@@ -22,6 +23,13 @@
     a.unlink:hover {
       color: inherit;
       text-decoration: none;
+    }
+
+    nav .nav-item:first-child .nav-link {
+      padding-left: 0;
+    }
+    nav .nav-item:last-child .nav-link {
+      padding-right: 0;
     }
   </style>
 
@@ -53,62 +61,40 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
-        <h1>Questions</h1>
-        <form action="">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" id="searchInput" class="form-control" placeholder="Search">
-              <div class="input-group-append">
-                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Recency</button>
-                <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item">Solved</a>
-                  <a href="#" class="dropdown-item">Bounty</a>
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item">Random</a>
+        <div id="questions">
+          <h1>Questions</h1>
+          <form action="">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Recency</button>
+                  <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Solved</a>
+                    <a href="#" class="dropdown-item">Bounty</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Random</a>
+                  </div>
                 </div>
               </div>
             </div>
+          </form>
+          <div v-for="question in questions">
+            <hr>
+            <a :href="question.uuid | url" class="unlink">
+              <h5>{{ question.title }}</h5>
+              <div class="row justify-content-between">
+                <div class="col-auto">
+                  <p>Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
+                </div>
+                <div class="col-auto">
+                  <p>{{ question.bounty }} XRP bounty</p>
+                </div>
+              </div>
+              <p>{{ question.body | trim }}</p>
+            </a>
           </div>
-        </form>
-        <hr>
-        <a href="question.html?q=aaaa-aaaa-aaaa-aaaa" class="unlink">
-          <h5 style="word-wrap: break-word;">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
-          <div class="row justify-content-between">
-            <div class="col-auto">
-              <p>Asked by USERNAME, 20 minutes ago</p>
-            </div>
-            <div class="col-auto">
-              <p>00.00 XPR bounty</p>
-            </div>
-          </div>
-          <p style="word-wrap: break-word;">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb...</p>
-        </a>
-        <hr>
-        <a href="question.html?q=bbbb-bbbb-bbbb-bbbb" class="unlink">
-          <h5 style="word-wrap: break-word;">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</h5>
-          <div class="row justify-content-between">
-            <div class="col-auto">
-              <p>Asked by USERNAME, 20 minutes ago</p>
-            </div>
-            <div class="col-auto">
-              <p>00.00 XPR bounty</p>
-            </div>
-          </div>
-          <p style="word-wrap: break-word;">cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc...</p>
-        </a>
-        <hr>
-        <a href="question.html?q=cccc-cccc-cccc-cccc" class="unlink">
-          <h5 style="word-wrap: break-word;">cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</h5>
-          <div class="row justify-content-between">
-            <div class="col-auto">
-              <p>Asked by USERNAME, 20 minutes ago</p>
-            </div>
-            <div class="col-auto">
-              <p>00.00 XPR bounty</p>
-            </div>
-          </div>
-          <p style="word-wrap: break-word;">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd...</p>
-        </a>
+        </div>
       </div>
     </div>
   </div>
@@ -116,5 +102,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonyous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./common.js"></script>
+  <script src="./moment.js"></script>
+  <script src="./questions.js"></script>
 </body>
 </html>
