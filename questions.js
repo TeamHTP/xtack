@@ -4,9 +4,14 @@ var questionsApp = new Vue({
     questions: []
   },
   created: function () {
-    getApi('/question', '', function (data, status) {
+    getApi('/question/list', '', function (data, status) {
       if (status === 200) {
-        this.questions = JSON.parse(data);
+        questionsApp.questions = JSON.parse(data);
+        for (var i = 0; i < questionsApp.questions.length; i++) {
+          getApi(`/account/${questionsApp[i].author_uuid}`, '', function (data, status) {
+            questionsApp.questions[i].author = JSON.parse(data).username;
+          });
+        }
       }
     });
   },

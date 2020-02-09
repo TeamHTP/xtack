@@ -33,6 +33,7 @@ var signinApp = new Vue({
 					}
 					Cookies.set('session_token', data, { expires: 7 });
 					console.log(data);
+					location.href="/questions.html";
 					signinApp.loading = false;
 				});
 			}			
