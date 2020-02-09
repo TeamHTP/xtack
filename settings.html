@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2020 by anonymous (http://jsbin.com/mapiwigora/1/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
 <meta name="robots" content="noindex">
 <html>
 <head>
@@ -16,47 +8,73 @@ Released under the MIT license: http://jsbin.mit-license.org
   
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- 
-  <title>XTACK</title>
+  
   <style>
-    body{
-      font-family: "Times New Roman", Times, 
+    button,
+    input,
+    textarea {
+      border-radius: 0 !important;
     }
   </style>
+  
+  <title>Xtack | Questions</title>
 </head>
 <body>
   
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
+        
         <h1>Account Settings</h1>
+
         <form action="">
           <div class="form-group">
-            <label for="usernameInput">Username</label>
-            <input readonly type="text" id="usernameInput" class="form-control" value = "{{ username }}">
+            <label for="usernameInput">Your username</label>
+            <input type="text" name="" id="usernameInput" class="form-control" disabled value="you">
           </div>
           <div class="form-group">
-            <label for="emailInput">Email</label>
-            <input type="email" id="emailInput" class="form-control" value="you@example.com">
+            <label for="emailInput">Your email</label>
+            <input type="email" name="" id="emailInput" class="form-control" value="you@example.com">
           </div>
           <div class="form-group">
-            <label for="currentPasswordInput">Password</label>
-            <input type="password" id="currentPasswordInput" class="form-control" placeholder="Current Password">
+            <label for="currentPasswordInput">Your current password</label>
+            <input type="password" name="" id="currentPasswordInput" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;">
           </div>
           <div class="form-group">
-            <input type="password" id="newPasswordInput" class="form-control" placeholder="New Password">
+            <input type="password" name="" id="newPasswordInput" class="form-control" placeholder="Your new password">
           </div>
           <div class="form-group">
-            <input type="password" id="confirmPasswordInput" class="form-control" placeholder="New Password Again">
+            <input type="password" name="" id="confirmPasswordInput" class="form-control" placeholder="Confirm new password">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-dark btn-block">Save Changes</button>
+            <button class="btn btn-dark btn-block" type="button">Submit</button>
           </div>
         </form>
+
+        <h1>Withdraw</h1>
+
+        <form action="">
+          <div class="form-group">
+            <label for="addressInput">Your wallet address</label>
+            <input type="text" name="" id="addressInput" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input id="confirmationInput" type="checkbox" class="custom-control-input">
+              <label for="confirmationInput" class="custom-control-label">I recognize that this is an unreversable action</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-dark btn-block" type="button">Widthdraw</button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
-  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonyous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </html>
