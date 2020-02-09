@@ -8,7 +8,7 @@ var questionsApp = new Vue({
       if (status === 200) {
         questionsApp.questions = JSON.parse(data);
         for (var i = 0; i < questionsApp.questions.length; i++) {
-          getApi(`/account/${questionsApp[i].author_uuid}`, '', function (data, status) {
+          getApi(`/account/${questionsApp.questions[i].author_uuid}`, '', function (data, status) {
             questionsApp.questions[i].author = JSON.parse(data).username;
           });
         }
