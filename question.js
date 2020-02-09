@@ -9,6 +9,7 @@ var question = new Vue({
         question.question = JSON.parse(data);
         getApi(`/account/${question.question.author_uuid}`, '', function (data, status) {
           question.question.author = JSON.parse(data).username;
+          question.$forceUpdate();
         });
       }
     });
@@ -53,6 +54,7 @@ var comments = new Vue({
     getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {
       if (status === 200) {
         comments.comments = JSON.parse(data);
+        comments.$forceUpdate();
       }
     });
   },

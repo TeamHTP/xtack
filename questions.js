@@ -12,6 +12,7 @@ var questionsApp = new Vue({
             for (var j = 0; j < questionsApp.questions.length; j++) {
               if (questionsApp.questions[j].author_uuid == JSON.parse(data2).uuid) {
                 questionsApp.questions[j].author = JSON.parse(data2).username;
+                questionsApp.$forceUpdate();
               }
             }
           });
