@@ -45,7 +45,7 @@ var comment = new Vue({
   }
 });
 
-var comments = new Vue({
+var commentsApp = new Vue({
   el: '#commentsApp',
   data: {
     commentsList: []
@@ -53,8 +53,8 @@ var comments = new Vue({
   created: function () {
     getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {
       if (status === 200) {
-        comments.commentsList = JSON.parse(data);
-        comments.$forceUpdate();
+        commentsApp.commentsList = JSON.parse(data);
+        commentsApp.$forceUpdate();
       }
     });
   },
