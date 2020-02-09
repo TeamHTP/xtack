@@ -31,6 +31,7 @@ var signinApp = new Vue({
 					if (status === 404) {
 						signin.usernameError = signin.passwordError = 'Your supplied credientials do not belong to any existing account.';
 					}
+					Cookies.set('session_token', data, { expires: 7 });
 					console.log(data);
 					signinApp.loading = false;
 				});
