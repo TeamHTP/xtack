@@ -5,7 +5,7 @@ function getApi(endpoint, params, callback) {
 	xhr.open('GET', `${API_ROOT}${endpoint}${params}`, true);
 	xhr.withCredentials = true;
 	var token = Cookies.get('session_token');
-	if (typeof token !== 'undefined') {
+	if (typeof token !== 'undefined' && token.length > 0) {
 		xhr.setRequestHeader('Authorization', `Bearer ${token}`);
 	}
 	xhr.onreadystatechange = function() {
@@ -21,7 +21,7 @@ function postApi(endpoint, params, callback) {
 	xhr.open('POST', `${API_ROOT}${endpoint}`, true);
 	xhr.withCredentials = true;
 	var token = Cookies.get('session_token');
-	if (typeof token !== 'undefined') {
+	if (typeof token !== 'undefined' && token.length > 0) {
 		xhr.setRequestHeader('Authorization', `Bearer ${token}`);
 	}
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
