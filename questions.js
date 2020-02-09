@@ -27,7 +27,7 @@ var questionsApp = new Vue({
       return value.substring(0, 140) + '...';
     },
     url: function (value) {
-      return 'question.html?q=' + value;
+      return 'question.html#' + value;
     }
   }
 });

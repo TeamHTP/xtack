@@ -4,9 +4,12 @@ var question = new Vue({
     question: {}
   },
   created: function () {
-    getApi('', '', function (data, status) {
+    getApi(`/question/${location.hash.substring(1)}`, '', function (data, status) {
       if (status === 200) {
-
+        question.question = JSON.parse(data);
+        getApi(`/account/${question.question.author_uuid}`, '', function (data, status) {
+          question.question.author = JSON.parse(data).username;
+        });
       }
     });
   },
