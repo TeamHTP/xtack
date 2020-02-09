@@ -48,12 +48,12 @@ var comment = new Vue({
 var comments = new Vue({
   el: '#comments',
   data: {
-    comments: []
+    commentsList: []
   },
   created: function () {
     getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {
       if (status === 200) {
-        comments.comments = JSON.parse(data);
+        comments.commentsList = JSON.parse(data);
         comments.$forceUpdate();
       }
     });

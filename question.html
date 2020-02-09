@@ -83,7 +83,7 @@
         </form>
         <hr>
         <div id="comments">
-          <div v-for="comment in comments">
+          <div v-for="comment in commentsList">
             <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
             <p>{{ comment.body }}</p>
           </div>
