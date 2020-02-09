@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+  <style>
+    button,
+    input,
+    textarea {
+      border-radius: 0 !important;
+    }
+  </style>
+  
+  <title>Xtack | Ask</title>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="row justify-content-center" style="height: 100vh;">
+      <div class="col-xl-8 col-lg-8 col">
+        
+        <h1>Ask your question</h1>
+
+        <form action="">
+          <div class="form-group">
+            <label for="titleInput">Give you question a title</label>
+            <input type="text" id="titleInput" class="form-control" placeholder="Question title">
+            <small class="form-text text-muted">Keep it brief but descriptive!</small>
+          </div>
+          <div class="form-group">
+            <label for="bodyInput">Give your question a body</label>
+            <textarea id="bodyInput" rows="10" class="form-control" placeholder="Question body"></textarea>
+            <small class="form-text text-muted">Try to be clear and concise to give your question the best shot of being answered!</small>
+          </div>
+          <div class="form-group row">
+            <label for="bountyInput" class="col-auto col-form-label">Give your question a bounty</label>
+            <div class="col-auto">
+              <input type="number" id="bountyInput" class="form-control" min="0" value="0">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input id="confirmationInput" type="checkbox" class="custom-control-input">
+              <label for="confirmationInput" class="custom-control-label">I agree to the terms & conditions</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-dark btn-block">Ask</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonyous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</body>
+</html>
