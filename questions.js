@@ -8,10 +8,10 @@ var questionsApp = new Vue({
       if (status === 200) {
         questionsApp.questions = JSON.parse(data);
         for (var i = 0; i < questionsApp.questions.length; i++) {
-          getApi(`/account/${questionsApp.questions[i].author_uuid}`, '', function (data, status) {
+          getApi(`/account/${questionsApp.questions[i].author_uuid}`, '', function (data2, status) {
             for (var j = 0; j < questionsApp.questions.length; j++) {
-              if (questionsApp.questions[j].author_uuid == JSON.parse(data).uuid) {
-                questionsApp.questions[j].author = JSON.parse(data).username;
+              if (questionsApp.questions[j].author_uuid == JSON.parse(data2).uuid) {
+                questionsApp.questions[j].author = JSON.parse(data2).username;
               }
             }
           });
