@@ -58,11 +58,11 @@
         <form action="">
           <div class="form-group">
             <label for="usernameInput">Your username</label>
-            <input type="text" name="" id="usernameInput" class="form-control" disabled value="you">
+            <input type="text" name="" id="usernameInput" class="form-control" disabled value="you" v-model="username">
           </div>
           <div class="form-group">
             <label for="emailInput">Your email</label>
-            <input type="email" name="" id="emailInput" class="form-control" value="you@example.com">
+            <input type="email" name="" id="emailInput" class="form-control" value="you@example.com" v-model="email">
           </div>
           <div class="form-group">
             <label for="currentPasswordInput">Your current password</label>
@@ -84,7 +84,7 @@
         <div class="form-group">
           <label for="depositAddressInput">Your deposit address</label>
           <div class="input-group">
-            <input type="text" name="" id="depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+            <input type="text" name="" id="depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="address">
             <div class="input-group-append">
               <button type="button" class="btn btn-dark">Copy</button>
             </div>
@@ -116,6 +116,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonyous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./common.js"></script>
   <script src="./menu.js"></script>
+  <script src="./settings.js"></script>
 </body>
 </html>
