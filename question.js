@@ -50,9 +50,9 @@ var comments = new Vue({
     comments: []
   },
   created: function () {
-    getApi('', '', function (data, status) {
+    getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {
       if (status === 200) {
-        
+        comments.comments = JSON.parse(data);
       }
     });
   },
