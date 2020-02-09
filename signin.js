@@ -28,8 +28,8 @@ var signinApp = new Vue({
 			if (!error) {
 				signinApp.loading = true;
 				getApi('/auth', `?&email=${signinApp.email}&password=${signinApp.password}`, function(data, status) {
-					if (status === 200) {
-
+					if (status === 404) {
+						signin.usernameError = signin.passwordError = 'Your supplied credientials do not belong to any existing account.';
 					}
 					console.log(data);
 					signinApp.loading = false;

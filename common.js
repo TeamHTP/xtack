@@ -4,6 +4,7 @@ function getApi(endpoint, params, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', `${API_ROOT}${endpoint}${params}`, true);
 	xhr.withCredentials = true;
+	xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('session_token'));
 	xhr.onreadystatechange = function() {
 	    if (xhr.readyState == 4) {
 	        callback(xhr.responseText, xhr.status);
@@ -16,6 +17,7 @@ function postApi(endpoint, params, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', `${API_ROOT}${endpoint}`, true);
 	xhr.withCredentials = true;
+	xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('session_token'));
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.onreadystatechange = function() {
 	    if (xhr.readyState == 4) {
