@@ -46,7 +46,7 @@ var comment = new Vue({
 });
 
 var comments = new Vue({
-  el: '#comments',
+  el: '#commentsApp',
   data: {
     commentsList: []
   },
