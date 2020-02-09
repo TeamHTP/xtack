@@ -1,4 +1,3 @@
-
 var signupApp = new Vue({
 	el: '#signup-form',
 	data: {
