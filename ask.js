@@ -44,6 +44,9 @@ var askApp = new Vue({
 					if (status == 400) {
 						askApp.bountyError = 'Your account does not have enough balance to cover this transaction.';
 					}
+					else if (status == 200) {
+						location.href = `/question.html#${JSON.parse(data).uuid}`;
+					}
 					askApp.loading = false;
 				});
 			}
