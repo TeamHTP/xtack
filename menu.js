@@ -9,7 +9,7 @@ var menuApp = new Vue({
 			if (status == 403) {
 				location.href = '/signin.html';
 			}
-			menuApp.balance = JSON.parse(data).balance;
+			menuApp.balance = JSON.parse(data).balance / 1000000;
 		});
 		getApi('/account', '', function (data, status) {
 			if (status == 403) {
