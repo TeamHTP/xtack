@@ -84,7 +84,17 @@
         <div class="form-group">
           <label for="depositAddressInput">Your deposit address</label>
           <div class="input-group">
-            <input type="text" name="" id="depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="address">
+            <input type="text" name="" id="depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="xaddress">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-dark">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="depositAddressInput">Your classic deposit address (some apps require a classic address)</label>
+          <div class="input-group">
+            <input type="text" name="" id="depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="raddress">
             <div class="input-group-append">
               <button type="button" class="btn btn-dark">Copy</button>
             </div>

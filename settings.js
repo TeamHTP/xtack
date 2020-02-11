@@ -3,7 +3,8 @@ var settings = new Vue({
 	data: {
 		email: '',
 		username: '',
-		address: ''
+		xaddress: '',
+		raddress: ''
 	},
 	created: function() {
 		getApi(`/account`, '', function (data, status) {
@@ -12,7 +13,8 @@ var settings = new Vue({
 			settings.username = account.username;
 		});
 		getApi(`/wallet`, '', function (data, status) {
-			settings.address = JSON.parse(data).address;
+			settings.xaddress = JSON.parse(data).addresses.xaddress;
+			settings.raddress = JSON.parse(data).addresses.raddress;
 		});
 	}
 })
