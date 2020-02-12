@@ -119,7 +119,7 @@
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-brand btn-block" type="button" v-on:click="withdraw()">Widthdraw</button>
+            <button class="btn btn-brand btn-block" type="button" :class="{ 'disabled': withdrawLoading }" v-on:click="withdraw()">{{ withdrawLoading ? '...' : 'Withdraw' }}</button>
           </div>
         </form>
 

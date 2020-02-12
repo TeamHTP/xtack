@@ -8,7 +8,8 @@ var settings = new Vue({
 		withdrawAddress: '',
 		withdrawAddressError: false,
 		withdrawConfirm: false,
-		withdrawConfirmError: false
+		withdrawConfirmError: false,
+		withdrawLoading: false
 	},
 	created: function() {
 		getApi(`/account`, '', function (data, status) {
@@ -23,13 +24,18 @@ var settings = new Vue({
 	},
 	methods: {
 		withdraw: function() {
+			if (this.withdrawLoading) {
+				return;
+			}
 			this.withdrawAddressError = false;
 			this.withdrawConfirmError = false;
 			if (!this.withdrawConfirm) {
 				this.withdrawConfirmError = 'Please recognize that this action is irreversable.';
 				return;
 			}
+			this.withdrawLoading = true;
 			getApi(`/withdraw`, `?address=${this.withdrawAddress}`, function (data, status) {
+				this.withdrawLoading = false;
 				location.reload();
 			});
 		}
