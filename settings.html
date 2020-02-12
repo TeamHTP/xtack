@@ -108,16 +108,18 @@
         <form action="">
           <div class="form-group">
             <label for="addressInput">Your wallet address</label>
-            <input type="text" name="" id="addressInput" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+            <input type="text" name="" id="addressInput" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" :class="{ 'is-invalid': withdrawAddressError }" v-model="withdrawAddress">
+            <div class="invalid-feedback">{{ withdrawAddressError }}</div>
           </div>
           <div class="form-group">
             <div class="custom-control custom-switch">
-              <input id="confirmationInput" type="checkbox" class="custom-control-input">
-              <label for="confirmationInput" class="custom-control-label">I recognize that this is an unreversable action</label>
+              <input id="confirmationInput" type="checkbox" class="custom-control-input" :class="{ 'is-invalid': withdrawConfirmError }" v-model="withdrawConfirm">
+              <label for="confirmationInput" class="custom-control-label">I recognize that this is an irreversable action.</label>
+              <div class="invalid-feedback">{{ withdrawConfirmError }}</div>
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-brand btn-block" type="button">Widthdraw</button>
+            <button class="btn btn-brand btn-block" type="button" v-on:click="withdraw()">Widthdraw</button>
           </div>
         </form>
 
