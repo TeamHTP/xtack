@@ -93,13 +93,14 @@
         </div>
 
         <div class="form-group">
-          <label for="r-depositAddressInput">Your classic deposit address (some apps require a classic address)</label>
+          <label for="r-depositAddressInput">Your classic deposit address</label>
           <div class="input-group">
             <input type="text" name="" id="r-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="raddress">
             <div class="input-group-append">
               <button type="button" class="btn btn-brand">Copy</button>
             </div>
           </div>
+          <small class="form-text text-muted">Some apps require a classic address. Using either address will deposit into the same wallet!</small>
         </div>
 
         <h1>Withdraw</h1>
