@@ -11,8 +11,18 @@ var question = new Vue({
           question.question.author = JSON.parse(data).username;
           question.$forceUpdate();
         });
-        comment.isOp = question.question.author_uuid == menuApp.account_uuid;
-        commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
+        var opUpdateInterval = setInterval(function () {
+          if (menuApp.account_uuid.length > 0) {
+            comment.isOp = question.question.author_uuid == menuApp.account_uuid;
+            commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
+            clearInterval(opUpdateInterval);
+          }
+        }, 500);
+        if (menuApp.account_uuid.length > 0) {
+          comment.isOp = question.question.author_uuid == menuApp.account_uuid;
+          commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
+          clearInterval(opUpdateInterval);
+        }
       }
     });
   },
