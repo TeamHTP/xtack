@@ -2,7 +2,8 @@ var menuApp = new Vue({
 	el: '#menu-app',
 	data: {
 		balance: '...',
-		username: 0,
+		username: '...',
+		account_uuid: ''
 	},
 	created: function() {
 		getApi('/wallet', '', function (data, status) {
@@ -15,7 +16,9 @@ var menuApp = new Vue({
 			if (status == 403) {
 				location.href = '/signin.html';
 			}
-			menuApp.username = JSON.parse(data).username;
+			var account = JSON.parse(data);
+			menuApp.username = account.username;
+			menuApp.account_uuid = account.uuid;
 		});
 	}
 });

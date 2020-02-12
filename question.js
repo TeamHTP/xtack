@@ -11,6 +11,8 @@ var question = new Vue({
           question.question.author = JSON.parse(data).username;
           question.$forceUpdate();
         });
+        comment.isOp = question.question.author_uuid == menuApp.account_uuid;
+        commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
       }
     });
   },
@@ -31,6 +33,7 @@ var comment = new Vue({
   el: '#comment',
   data: {
     text: '',
+    isOp: true
   },
   methods: {
     submit: function () {
@@ -48,7 +51,8 @@ var comment = new Vue({
 var commentsApp = new Vue({
   el: '#commentsApp',
   data: {
-    commentsList: []
+    commentsList: [],
+    isOp: true
   },
   created: function () {
     getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {

@@ -68,18 +68,20 @@
         </div>
         <h1>Answers</h1>
         <div id="comment">
-          <div class="form-group">
-            <label for="answerInput">Type your answer</label>
-            <textarea id="answerInput" rows="3" class="form-control" placeholder="Answer" v-model="text"></textarea>
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-switch">
-              <input id="confirmationInput" type="checkbox" class="custom-control-input">
-              <label for="confirmationInput" class="custom-control-label">I agree to the terms & conditions</label>
+          <div v-if="!isOp">
+            <div class="form-group">
+              <label for="answerInput">Type your answer</label>
+              <textarea id="answerInput" rows="3" class="form-control" placeholder="Answer" v-model="text"></textarea>
             </div>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-brand btn-block" v-on:click="submit()">Submit</button>
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input id="confirmationInput" type="checkbox" class="custom-control-input">
+                <label for="confirmationInput" class="custom-control-label">I agree to the terms & conditions</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-brand btn-block" v-on:click="submit()">Submit</button>
+            </div>
           </div>
         </div>
         <hr>
@@ -87,6 +89,7 @@
           <div v-for="comment in commentsList">
             <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
             <p>{{ comment.body }}</p>
+            <button type="button" class="btn btn-brand">Mark as solved</button>
           </div>
         </div>
       </div>
