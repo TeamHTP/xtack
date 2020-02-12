@@ -1,4 +1,7 @@
-
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: #5e5e8f;
+    background-color: #5e5e8f;
+}
 /*------------------------------------
 - COLOR brand
 ------------------------------------*/
