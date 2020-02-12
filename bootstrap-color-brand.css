@@ -2,6 +2,11 @@
     border-color: #5e5e8f;
     background-color: #5e5e8f;
 }
+
+.form-control:focus {
+    border-color: #494970;
+    box-shadow: 0 0 0 0.2rem rgba(94, 94, 143, 0.5);
+}
 /*------------------------------------
 - COLOR brand
 ------------------------------------*/
