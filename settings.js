@@ -36,7 +36,15 @@ var settings = new Vue({
 			this.withdrawLoading = true;
 			getApi(`/withdraw`, `?address=${this.withdrawAddress}`, function (data, status) {
 				this.withdrawLoading = false;
-				location.reload();
+				if (status == 500) {
+					this.withdrawAddressError = 'Our servers encountered a problem while processing your withdraw.';
+				}
+				else if (status == 400) {
+					this.withdrawAddressError = 'There was a problem withdrawing to this address. Please ensure that this address isn\'t invalid.';
+				}
+				else {
+					location.reload();
+				}
 			});
 		}
 	}
