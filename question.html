@@ -87,9 +87,15 @@
         <hr>
         <div id="commentsApp">
           <div v-for="comment in commentsList">
-            <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
+            <div class="row">
+              <div class="col-9">
+                <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-brand">Mark as solved</button>
+              </div>
+            </div>
             <p>{{ comment.body }}</p>
-            <button type="button" class="btn btn-brand">Mark as solved</button>
           </div>
         </div>
       </div>
