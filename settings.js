@@ -29,7 +29,7 @@ var settings = new Vue({
 				this.withdrawConfirmError = 'Please recognize that this action is irreversable.';
 				return;
 			}
-			getApi(`/withdraw`, `?address=${withdrawAddress}`, function (data, status) {
+			getApi(`/withdraw`, `?address=${this.withdrawAddress}`, function (data, status) {
 				location.reload();
 			});
 		}
