@@ -2,10 +2,17 @@
     border-color: #5e5e8f;
     background-color: #5e5e8f;
 }
-
 .custom-control-input:focus~.custom-control-label::before {
     box-shadow: 0 0 0 0.2rem rgba(94, 94, 143, 0.5);
 }
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+    border-color: #494970;
+}
+.custom-control-input:not(:disabled):active~.custom-control-label::before {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #494970;
+}
+
 .form-control:focus {
     border-color: #494970;
     box-shadow: 0 0 0 0.2rem rgba(94, 94, 143, 0.5);
