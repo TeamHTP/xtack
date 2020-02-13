@@ -39,9 +39,6 @@ body {
 [v-cloak] {
     display: none
 }
-a {
-    text-decoration: underline;
-}
 
 /*------------------------------------
 - COLOR brand
