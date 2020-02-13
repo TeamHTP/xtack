@@ -42,7 +42,7 @@ var askApp = new Vue({
 				this.loading = true;
 				postApi('/question', `title=${this.title}&body=${this.body}&bounty=${this.bounty}`, function (data, status) {
 					if (status == 400) {
-						askApp.bountyError = 'Your account does not have enough balance to cover this transaction.';
+						askApp.bountyError = JSON.parse(data).message || 'Your account does not have enough balance to cover this transaction.';
 					}
 					else if (status == 200) {
 						location.href = `/question.html#${JSON.parse(data).uuid}`;
