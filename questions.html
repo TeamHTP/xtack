@@ -88,7 +88,7 @@
                   <p>Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
                 </div>
                 <div class="col-auto">
-                  <h5><span class="badge badge-pill badge-brand-success" v-if="typeof question.accepted_answer_uuid !== 'undefined'">Solved</span> <span class="badge badge-pill badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
+                  <h5><span class="badge badge-brand-success" v-if="typeof question.accepted_answer_uuid !== 'undefined'">Solved</span> <span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
                 </div>
               </div>
               <p>{{ question.body | trim }}</p>

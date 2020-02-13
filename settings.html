@@ -54,103 +54,117 @@
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
 
-        <h1>Account Settings</h1>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-settings-tab" data-toggle="tab" href="#nav-settings" role="tab" aria-controls="nav-settings" aria-selected="true">Settings</a>
+            <a class="nav-item nav-link" id="nav-deposit-tab" data-toggle="tab" href="#nav-deposit" role="tab" aria-controls="nav-deposit" aria-selected="false">Deposit</a>
+            <a class="nav-item nav-link" id="nav-withdraw-tab" data-toggle="tab" href="#nav-withdraw" role="tab" aria-controls="nav-withdraw" aria-selected="false">Withdraw</a>
+            <a class="nav-item nav-link" id="nav-history-tab" data-toggle="tab" href="#nav-history" role="tab" aria-controls="nav-history" aria-selected="false">History</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">
+            <h1>Account Settings</h1>
 
-        <form action="">
-          <div class="form-group">
-            <label for="usernameInput">Your username</label>
-            <input type="text" name="" id="usernameInput" class="form-control" disabled value="you" v-model="username">
+            <form action="">
+              <div class="form-group">
+                <label for="usernameInput">Your username</label>
+                <input type="text" name="" id="usernameInput" class="form-control" disabled value="you" v-model="username">
+              </div>
+              <div class="form-group">
+                <label for="emailInput">Your email</label>
+                <input type="email" name="" id="emailInput" class="form-control" value="you@example.com" v-model="email">
+              </div>
+              <div class="form-group">
+                <label for="currentPasswordInput">Your current password</label>
+                <input type="password" name="" id="currentPasswordInput" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;">
+              </div>
+              <div class="form-group">
+                <input type="password" name="" id="newPasswordInput" class="form-control" placeholder="Your new password">
+              </div>
+              <div class="form-group">
+                <input type="password" name="" id="confirmPasswordInput" class="form-control" placeholder="Confirm new password">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-brand btn-block" type="button">Submit</button>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-brand btn-block" type="button" v-on:click="signout()">Sign out</button>
+              </div>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="emailInput">Your email</label>
-            <input type="email" name="" id="emailInput" class="form-control" value="you@example.com" v-model="email">
-          </div>
-          <div class="form-group">
-            <label for="currentPasswordInput">Your current password</label>
-            <input type="password" name="" id="currentPasswordInput" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;">
-          </div>
-          <div class="form-group">
-            <input type="password" name="" id="newPasswordInput" class="form-control" placeholder="Your new password">
-          </div>
-          <div class="form-group">
-            <input type="password" name="" id="confirmPasswordInput" class="form-control" placeholder="Confirm new password">
-          </div>
-          <div class="form-group">
-            <button class="btn btn-brand btn-block" type="button">Submit</button>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-brand btn-block" type="button" v-on:click="signout()">Sign out</button>
-          </div>
-        </form>
+          <div class="tab-pane fade" id="nav-deposit" role="tabpanel" aria-labelledby="nav-deposit-tab">
+            <h1>Deposit</h1>
 
-        <h1>Deposit</h1>
+            <div class="form-group">
+              <label for="x-depositAddressInput">Your deposit address</label>
+              <div class="input-group">
+                <input type="text" name="" id="x-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="xaddress" style="font-size: 16px; font-family: monospace;">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-brand" v-on:click="copy('#x-depositAddressInput')">Copy</button>
+                </div>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <label for="x-depositAddressInput">Your deposit address</label>
-          <div class="input-group">
-            <input type="text" name="" id="x-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="xaddress" style="font-size: 16px; font-family: monospace;">
-            <div class="input-group-append">
-              <button type="button" class="btn btn-brand" v-on:click="copy('#x-depositAddressInput')">Copy</button>
+            <div class="form-group">
+              <label for="r-depositAddressInput">Your classic deposit address</label>
+              <div class="input-group">
+                <input type="text" name="" id="r-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="raddress" style="font-size: 16px; font-family: monospace;">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-brand" v-on:click="copy('#r-depositAddressInput')">Copy</button>
+                </div>
+              </div>
+              <small class="form-text text-muted">Some apps require a classic address. If you need to use a classic address, you <span style="font-weight: bold;">MUST</span> include the destination tag!</small>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-withdraw" role="tabpanel" aria-labelledby="nav-withdraw-tab">
+            <h1>Withdraw</h1>
+
+            <form action="">
+              <div class="form-group">
+                <label for="addressInput">Your wallet address</label>
+                <input type="text" name="" id="addressInput" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" :class="{ 'is-invalid': withdrawAddressError }" v-model="withdrawAddress">
+                <div class="invalid-feedback">{{ withdrawAddressError }}</div>
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-switch">
+                  <input id="confirmationInput" type="checkbox" class="custom-control-input" :class="{ 'is-invalid': withdrawConfirmError }" v-model="withdrawConfirm">
+                  <label for="confirmationInput" class="custom-control-label">I recognize that this is an irreversable action.</label>
+                  <div class="invalid-feedback">{{ withdrawConfirmError }}</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-brand btn-block" type="button" :class="{ 'disabled': withdrawLoading }" v-on:click="withdraw()">{{ withdrawLoading ? '...' : 'Withdraw' }}</button>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
+            <h1>Transactions</h1>
+
+            <div>
+              <table class="table table-borderless table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="transaction in transactions">
+                    <td>{{ transaction.timestamp | convert }}</td>
+                    <td>{{ transaction.src }}</td>
+                    <td>{{ transaction.dest }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.drops / 1000000 }} XRP</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="r-depositAddressInput">Your classic deposit address</label>
-          <div class="input-group">
-            <input type="text" name="" id="r-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="raddress" style="font-size: 16px; font-family: monospace;">
-            <div class="input-group-append">
-              <button type="button" class="btn btn-brand" v-on:click="copy('#r-depositAddressInput')">Copy</button>
-            </div>
-          </div>
-          <small class="form-text text-muted">Some apps require a classic address. If you need to use a classic address, you <span style="font-weight: bold;">MUST</span> include the destination tag!</small>
-        </div>
-
-        <h1>Withdraw</h1>
-
-        <form action="">
-          <div class="form-group">
-            <label for="addressInput">Your wallet address</label>
-            <input type="text" name="" id="addressInput" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" :class="{ 'is-invalid': withdrawAddressError }" v-model="withdrawAddress">
-            <div class="invalid-feedback">{{ withdrawAddressError }}</div>
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-switch">
-              <input id="confirmationInput" type="checkbox" class="custom-control-input" :class="{ 'is-invalid': withdrawConfirmError }" v-model="withdrawConfirm">
-              <label for="confirmationInput" class="custom-control-label">I recognize that this is an irreversable action.</label>
-              <div class="invalid-feedback">{{ withdrawConfirmError }}</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-brand btn-block" type="button" :class="{ 'disabled': withdrawLoading }" v-on:click="withdraw()">{{ withdrawLoading ? '...' : 'Withdraw' }}</button>
-          </div>
-        </form>
-
-        <h1>Transactions</h1>
-
-        <div>
-          <table class="table table-borderless table-sm">
-            <thead>
-              <tr>
-                <th scope="col">Time</th>
-                <th scope="col">Source</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Type</th>
-                <th scope="col">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="transaction in transactions">
-                <td>{{ transaction.timestamp | convert }}</td>
-                <td>{{ transaction.src }}</td>
-                <td>{{ transaction.dest }}</td>
-                <td>{{ transaction.type }}</td>
-                <td>{{ transaction.drops / 1000000 }} XRP</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
       </div>
     </div>
   </div>
