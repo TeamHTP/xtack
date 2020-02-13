@@ -138,11 +138,11 @@
             </thead>
             <tbody>
               <tr v-for="transaction in transactions">
-                <td>{{ transaction.timestamp }}</td>
+                <td>{{ transaction.timestamp | convert }}</td>
                 <td>{{ transaction.src }}</td>
                 <td>{{ transaction.dest }}</td>
                 <td>{{ transaction.type }}</td>
-                <td>{{ transaction.drops / 1000000 }}</td>
+                <td>{{ transaction.drops / 1000000 }} XRP</td>
               </tr>
             </tbody>
           </table>

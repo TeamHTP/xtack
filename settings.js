@@ -26,6 +26,11 @@ var settings = new Vue({
 			settings.transactions = JSON.parse(data);
 		});
 	},
+  filters: {
+    convert: function (value) {
+      return moment(value, 'x').fromNow();
+    }
+  },
 	methods: {
 		withdraw: function() {
 			if (this.withdrawLoading) {
