@@ -75,7 +75,7 @@
                 <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
               </div>
               <div class="col-3">
-                <span class="badge badge-brand-success float-right" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span>
+                <h5><span class="badge badge-brand-success float-right" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span></h5>
                 <button type="button" class="btn btn-sm btn-brand float-right" v-on:click="solution(comment.uuid)" v-if="isOp && comment.uuid != question.question.accepted_answer_uuid">Mark as solution</button>
               </div>
             </div>
