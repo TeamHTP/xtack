@@ -156,10 +156,10 @@
                   <tr v-for="transaction in transactions">
                     <td>{{ transaction.timestamp | convert }}</td>
                     <td>{{ transaction.src }}</td>
-                    <td v-if="typeof transaction.ripple_transaction_id === 'undefined'">
+                    <td v-if="transaction.ripple_transaction_id == null">
                       {{ transaction.dest }}
                     </td>
-                    <td v-if="typeof transaction.ripple_transaction_id !== 'undefined'">
+                    <td v-if="transaction.ripple_transaction_id != null">
                       <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">Ripple Network</a>
                     </td>
                     <td>{{ transaction.type }}</td>
