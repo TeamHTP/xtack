@@ -20,13 +20,13 @@
   
   <title>Xtack | Sign Up</title>
 </head>
-<body v-cloak>
+<body>
   
   <div class="container">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
       <div class="col-xl-8 col-lg-8 col">
         <h1 class="text-brand">Xtack</h1>
-          <div id="signup-form">
+          <div id="signup-form" v-cloak>
             <div class="form-group">
               <label for="usernameInput">Enter your username</label>
               <input type="text" id="usernameInput" class="form-control" :class="{ 'is-invalid': usernameError }" placeholder="you" autofocus v-model="username">

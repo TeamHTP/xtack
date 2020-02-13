@@ -20,13 +20,13 @@
   
   <title>Xtack | Sign In</title>
 </head>
-<body v-cloak>
+<body>
   
   <div class="container">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
       <div class="col-xl-8 col-lg-8 col">
         <h1 class="text-brand">Xtack</h1>
-          <div id="signin-form">
+          <div id="signin-form" v-cloak>
             <div class="form-group">
               <label for="inputEmail">Your email address</label>
               <input type="email" id="inputEmail" class="form-control" :class="{ 'is-invalid': emailError }" placeholder="you@example.com" required autofocus v-model="email" v-on:keyup.enter="signin()">
