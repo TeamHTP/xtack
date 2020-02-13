@@ -86,6 +86,9 @@ var commentsApp = new Vue({
   methods: {
     solution: function(answerUuid) {
       getApi(`/questions/${question.question.uuid}/answer/${answerUuid}/accept`, '', function (data, status) {
+        if (status == 200) {
+          location.reload();
+        }
         console.log(data);
       });
     }
