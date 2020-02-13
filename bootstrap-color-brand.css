@@ -36,6 +36,9 @@ body {
 .tab-pane {
     padding-top: 1em;
 }
+[v-cloak] {
+    display: none
+}
 
 /*------------------------------------
 - COLOR brand
