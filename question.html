@@ -92,7 +92,7 @@
                 <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
               </div>
               <div class="col-3">
-                <button type="button" class="btn btn-sm btn-brand" v-on:click="solution(comment.uuid)">Mark as solution</button>
+                <button type="button" class="btn btn-sm btn-brand" v-on:click="solution(comment.uuid)" v-if="isOp">Mark as solution</button>
               </div>
             </div>
             <p>{{ comment.body }}</p>
