@@ -35,7 +35,7 @@ var askApp = new Vue({
 				error = true;
 			}
 			if (!this.tos) {
-				this.tosError = 'Please accept the terms & conditions.';
+				this.tosError = 'Please recognize that this action is irreversible.';
 				error = true;
 			}
 			if (!error) {
