@@ -29,7 +29,7 @@ var signinApp = new Vue({
 				signinApp.loading = true;
 				getApi('/auth', `?&email=${signinApp.email}&password=${signinApp.password}`, function(data, status) {
 					if (status === 404) {
-						signinApp.usernameError = signin.passwordError = 'Your supplied credientials do not belong to any existing account.';
+						signinApp.usernameError = signinApp.passwordError = 'Your supplied credientials do not belong to any existing account.';
 					}
 					Cookies.set('session_token', data, { expires: 7 });
 					console.log(data);
