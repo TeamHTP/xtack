@@ -36,3 +36,25 @@ function postApi(endpoint, params, callback) {
 function isEmailValid(mail) {
 	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail);
 }
+
+var accountsCache = {};
+function queryAccountsCache(uuid, callback) {
+	if (typeof accountsCache[uuid] === 'undefined') {
+		accountsCache[uuid] = {};
+		accountsCache[uuid].callbackQueue = [ callback ];
+		getApi(`/account/${uuid}`, '', function(data, status) {
+			if (status === 200) {
+				accountsCache[uuid].account = JSON.parse(data);
+				for (var i in accountsCache[uuid].callbackQueue) {
+					accountsCache[uuid].callbackQueue[i](accountsCache[uuid].account);
+				}
+			}
+		});
+	}
+	else if (typeof accountsCache[uuid].account === 'undefined') {
+		accountsCache[uuid].callbackQueue.push(callback);
+	}
+	else {
+		callback(accountsCache[uuid].account);
+	}
+}

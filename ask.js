@@ -35,14 +35,17 @@ var askApp = new Vue({
 				error = true;
 			}
 			if (!this.tos) {
-				this.tosError = 'Please accept the terms & conditions.';
+				this.tosError = 'Please recognize that this action is irreversible.';
 				error = true;
 			}
 			if (!error) {
 				this.loading = true;
 				postApi('/question', `title=${this.title}&body=${this.body}&bounty=${this.bounty}`, function (data, status) {
 					if (status == 400) {
-						askApp.bountyError = 'Your account does not have enough balance to cover this transaction.';
+						askApp.bountyError = JSON.parse(data).message || 'Your account does not have enough balance to cover this transaction.';
+					}
+					else if (status == 200) {
+						location.href = `/question.html#${JSON.parse(data).uuid}`;
 					}
 					askApp.loading = false;
 				});

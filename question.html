@@ -8,6 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./bootstrap-color-brand.css">
 
   <style>
     button,
@@ -28,20 +29,20 @@
 </head>
 <body>
 
-  <nav class="container" id="menu-app">
+  <nav class="container" id="menu-app" v-cloak>
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
         <div class="row justify-content-between">
           <div class="col-auto">
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="#" class="nav-link font-weight-bold">Xtack</a></li>
-              <li class="nav-item"><a href="questions.html" class="nav-link">Questions</a></li>
-              <li class="nav-item"><a href="ask.html" class="nav-link">Ask</a></li>
+              <li class="nav-item"><a href="index.html" class="nav-link text-brand font-weight-bold text-brand">Xtack</a></li>
+              <li class="nav-item"><a href="questions.html" class="nav-link text-brand">Questions</a></li>
+              <li class="nav-item"><a href="ask.html" class="nav-link text-brand">Ask</a></li>
             </ul>
           </div>
           <div class="col-auto">
             <ul class="nav">
-              <li class="nav-item"><a href="settings.html" class="nav-link">{{ username }} ({{ balance }} XRP)</a></li>
+              <li class="nav-item"><a href="settings.html" class="nav-link text-brand">{{ username }} ({{ balance }} XRP)</a></li>
             </ul>
           </div>
         </div>
@@ -52,40 +53,47 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
-        <div id="question">
+        <div id="question" v-cloak>
           <h1>Question</h1>
-          <h5>{{ question.title }}</h5>
+          <hr>
+          <h4>{{ question.title }}</h4>
           <div class="row justify-content-between">
             <div class="col-auto">
               <p>Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
             </div>
             <div class="col-auto">
-              <p>{{ question.bounty_min }} XRP bounty</p>
+              <h5><span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
             </div>
           </div>
           <p>{{ question.body }}</p>
         </div>
         <h1>Answers</h1>
-        <div id="comment">
-          <div class="form-group">
-            <label for="answerInput">Type your answer</label>
-            <textarea id="answerInput" rows="3" class="form-control" placeholder="Answer" v-model="text"></textarea>
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-switch">
-              <input id="confirmationInput" type="checkbox" class="custom-control-input">
-              <label for="confirmationInput" class="custom-control-label">I agree to the terms & conditions</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-dark btn-block" v-on:click="submit()">Submit</button>
-          </div>
-        </form>
         <hr>
-        <div id="commentsApp">
+        <div id="commentsApp" v-cloak>
           <div v-for="comment in commentsList">
-            <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
+            <div class="row">
+              <div class="col-9">
+                <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
+              </div>
+              <div class="col-3">
+                <h5><span class="badge badge-brand-success float-right" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span></h5>
+                <button type="button" class="btn btn-sm btn-brand float-right" v-on:click="solution(comment.uuid)" v-if="isOp && comment.uuid != question.question.accepted_answer_uuid">Mark as solution</button>
+              </div>
+            </div>
             <p>{{ comment.body }}</p>
+            <hr>
+          </div>
+        </div>
+
+        <div id="comment" v-cloak>
+          <div v-if="!isOp">
+            <div class="form-group">
+              <label for="answerInput">Type your answer</label>
+              <textarea id="answerInput" rows="3" class="form-control" placeholder="Answer" v-model="text" v-on:keyup.enter="submit()"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-brand btn-block" v-on:click="submit()">Submit</button>
+            </div>
           </div>
         </div>
       </div>

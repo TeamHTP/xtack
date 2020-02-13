@@ -7,10 +7,22 @@ var question = new Vue({
     getApi(`/question/${location.hash.substring(1)}`, '', function (data, status) {
       if (status === 200) {
         question.question = JSON.parse(data);
-        getApi(`/account/${question.question.author_uuid}`, '', function (data, status) {
-          question.question.author = JSON.parse(data).username;
+        queryAccountsCache(question.question.author_uuid, function (account) {
+          question.question.author = account.username;
           question.$forceUpdate();
         });
+        var opUpdateInterval = setInterval(function () {
+          if (menuApp.account_uuid.length > 0) {
+            comment.isOp = question.question.author_uuid == menuApp.account_uuid;
+            commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
+            clearInterval(opUpdateInterval);
+          }
+        }, 100);
+        if (menuApp.account_uuid.length > 0) {
+          comment.isOp = question.question.author_uuid == menuApp.account_uuid;
+          commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
+          clearInterval(opUpdateInterval);
+        }
       }
     });
   },
@@ -31,6 +43,7 @@ var comment = new Vue({
   el: '#comment',
   data: {
     text: '',
+    isOp: true
   },
   methods: {
     submit: function () {
@@ -48,15 +61,46 @@ var comment = new Vue({
 var commentsApp = new Vue({
   el: '#commentsApp',
   data: {
-    commentsList: []
+    question,
+    commentsList: [],
+    isOp: true
   },
   created: function () {
     getApi(`/question/${location.hash.substring(1)}/answers`, '', function (data, status) {
       if (status === 200) {
         commentsApp.commentsList = JSON.parse(data);
+        for (var i = 0; i < commentsApp.commentsList.length; i++) {
+          /*getApi(`/account/${commentsApp.commentsList[i].author_uuid}`, '', function (data2, status) {
+            for (var j = 0; j < commentsApp.commentsList.length; j++) {
+              if (commentsApp.commentsList[j].author_uuid == JSON.parse(data2).uuid) {
+                commentsApp.commentsList[j].author = JSON.parse(data2).username;
+                commentsApp.$forceUpdate();
+              }
+            }
+          });*/
+
+          queryAccountsCache(commentsApp.commentsList[i].author_uuid, function (account) {
+            for (var j = 0; j < commentsApp.commentsList.length; j++) {
+              if (commentsApp.commentsList[j].author_uuid == account.uuid) {
+                commentsApp.commentsList[j].author = account.username;
+                commentsApp.$forceUpdate();
+              }
+            }
+          });
+        }
         commentsApp.$forceUpdate();
       }
     });
+  },
+  methods: {
+    solution: function(answerUuid) {
+      getApi(`/questions/${question.question.uuid}/answer/${answerUuid}/accept`, '', function (data, status) {
+        if (status == 200) {
+          location.reload();
+        }
+        console.log(data);
+      });
+    }
   },
   filters: {
     convert: function (value) {

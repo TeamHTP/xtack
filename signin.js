@@ -13,7 +13,6 @@ var signinApp = new Vue({
 				return;
 			}
 			var error = false;
-			signinApp.usernameError = false;
 			signinApp.emailError = false;
 			signinApp.passwordError = false;
 			signinApp.tosError = false;
@@ -28,13 +27,14 @@ var signinApp = new Vue({
 			if (!error) {
 				signinApp.loading = true;
 				getApi('/auth', `?&email=${signinApp.email}&password=${signinApp.password}`, function(data, status) {
+					signinApp.loading = false;
 					if (status === 404) {
-						signin.usernameError = signin.passwordError = 'Your supplied credientials do not belong to any existing account.';
+						signinApp.emailError = signinApp.passwordError = 'Your supplied credientials do not belong to any existing account.';
+						return;
 					}
 					Cookies.set('session_token', data, { expires: 7 });
 					console.log(data);
 					location.href="/questions.html";
-					signinApp.loading = false;
 				});
 			}			
 		}

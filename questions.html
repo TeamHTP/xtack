@@ -37,20 +37,20 @@
 </head>
 <body>
 
-  <nav class="container" id="menu-app">
+  <nav class="container" id="menu-app" v-cloak>
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
         <div class="row justify-content-between">
           <div class="col-auto">
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="#" class="nav-link font-weight-bold">Xtack</a></li>
-              <li class="nav-item"><a href="questions.html" class="nav-link">Questions</a></li>
-              <li class="nav-item"><a href="ask.html" class="nav-link">Ask</a></li>
+              <li class="nav-item"><a href="index.html" class="nav-link text-brand font-weight-bold text-brand">Xtack</a></li>
+              <li class="nav-item"><a href="questions.html" class="nav-link text-brand">Questions</a></li>
+              <li class="nav-item"><a href="ask.html" class="nav-link text-brand">Ask</a></li>
             </ul>
           </div>
           <div class="col-auto">
             <ul class="nav">
-              <li class="nav-item"><a href="settings.html" class="nav-link">{{ username }} ({{ balance }} XRP)</a></li>
+              <li class="nav-item"><a href="settings.html" class="nav-link text-brand">{{ username }} ({{ balance }} XRP)</a></li>
             </ul>
           </div>
         </div>
@@ -61,14 +61,14 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-8 col">
-        <div id="questions">
+        <div id="questions" v-cloak>
           <h1>Questions</h1>
           <form action="">
             <div class="form-group">
               <div class="input-group">
                 <input type="text" id="searchInput" class="form-control" placeholder="Search">
                 <div class="input-group-append">
-                  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Recency</button>
+                  <button type="button" class="btn btn-brand dropdown-toggle" data-toggle="dropdown">Recency</button>
                   <div class="dropdown-menu">
                     <a href="#" class="dropdown-item">Solved</a>
                     <a href="#" class="dropdown-item">Bounty</a>
@@ -88,7 +88,7 @@
                   <p>Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
                 </div>
                 <div class="col-auto">
-                  <p>{{ question.bounty_min }} XRP bounty</p>
+                  <h5><span class="badge badge-brand-success" v-if="question.accepted_answer_uuid != null">Solved</span> <span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
                 </div>
               </div>
               <p>{{ question.body | trim }}</p>

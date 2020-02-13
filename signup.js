@@ -46,7 +46,7 @@ var signupApp = new Vue({
 				signupApp.loading = true;
 				postApi('/account', `username=${signupApp.username}&email=${signupApp.email}&password=${signupApp.password}&tos=${signupApp.tos}`, function(data, status) {
 					if (status === 200) {
-
+						location.href = '/signin.html';
 					}
 					console.log(data);
 					signupApp.loading = false;
