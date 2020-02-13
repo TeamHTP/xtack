@@ -155,17 +155,17 @@
                 <tbody>
                   <tr v-for="transaction in transactions">
                     <td>{{ transaction.timestamp | convert }}</td>
-                    <td v-if="transaction.src_account_uuid == uuid && transaction.ripple_transaction_id == null">
+                    <td v-if="transaction.src_account_uuid == uuid || transaction.ripple_transaction_id == null">
                       {{ transaction.src }}
                     </td>
-                    <td v-if="transaction.src_account_uuid == uuid && transaction.ripple_transaction_id != null">
-                      <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">Ripple Network</a>
+                    <td v-if="transaction.src_account_uuid != uuid && transaction.ripple_transaction_id != null">
+                      <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">XRP Network</a>
                     </td>
-                    <td v-if="transaction.src_account_uuid != uuid && transaction.ripple_transaction_id == null">
+                    <td v-if="transaction.src_account_uuid != uuid || transaction.ripple_transaction_id == null">
                       {{ transaction.dest }}
                     </td>
-                    <td v-if="transaction.src_account_uuid != uuid && transaction.ripple_transaction_id != null">
-                      <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">Ripple Network</a>
+                    <td v-if="transaction.src_account_uuid == uuid && transaction.ripple_transaction_id != null">
+                      <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">XRP Network</a>
                     </td>
                     <td>{{ transaction.type }}</td>
                     <td>{{ transaction.drops / 1000000 }} XRP</td>
