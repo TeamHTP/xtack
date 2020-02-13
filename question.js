@@ -61,6 +61,7 @@ var comment = new Vue({
 var commentsApp = new Vue({
   el: '#commentsApp',
   data: {
+    question,
     commentsList: [],
     isOp: true
   },
