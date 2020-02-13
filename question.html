@@ -92,7 +92,8 @@
                 <p>Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
               </div>
               <div class="col-3">
-                <button type="button" class="btn btn-sm btn-brand" v-on:click="solution(comment.uuid)" v-if="isOp">Mark as solution</button>
+                <span class="badge badge-pill badge-success" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span>
+                <button type="button" class="btn btn-sm btn-brand" v-on:click="solution(comment.uuid)" v-if="isOp && comment.uuid != question.question.accepted_answer_uuid">Mark as solution</button>
               </div>
             </div>
             <p>{{ comment.body }}</p>
