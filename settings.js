@@ -60,6 +60,9 @@ var settings = new Vue({
 			var el = document.querySelector(`${selector}`);
 			el.select();
 			document.execCommand('copy');
+		},
+		signout: function () {
+			location.href = '/signout.html';
 		}
 	}
 })
