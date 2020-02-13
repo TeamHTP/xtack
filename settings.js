@@ -19,35 +19,36 @@ var settings = new Vue({
 			settings.uuid = account.uuid;
 			settings.email = account.email;
 			settings.username = account.username;
+			
+			getApi(`/transactions`, '', function (data, status) {
+				settings.transactions = JSON.parse(data);
+				for (var i in settings.transactions) {
+					var transaction = settings.transactions[i];
+					if (transaction.src_account_uuid == settings.uuid) {
+						transaction.drops = -transaction.drops;
+					}
+					queryAccountsCache(transaction.src_account_uuid, function (account) {
+						for (var j in settings.transactions) {
+							if (settings.transactions[j].src_account_uuid == account.uuid) {
+								settings.transactions[j].src = account.username;
+							}
+						}
+						settings.$forceUpdate();
+					});
+					queryAccountsCache(transaction.dest_account_uuid, function (account) {
+						for (var j in settings.transactions) {
+							if (settings.transactions[j].dest_account_uuid == account.uuid) {
+								settings.transactions[j].dest = account.username;
+							}
+						}
+						settings.$forceUpdate();
+					});
+				}
+			});
 		});
 		getApi(`/wallet`, '', function (data, status) {
 			settings.xaddress = JSON.parse(data).addresses.xaddress;
 			settings.raddress = JSON.parse(data).addresses.raddress;
-		});
-		getApi(`/transactions`, '', function (data, status) {
-			settings.transactions = JSON.parse(data);
-			for (var i in settings.transactions) {
-				var transaction = settings.transactions[i];
-				if (transaction.src_account_uuid == settings.uuid) {
-					transaction.drops = -transaction.drops;
-				}
-				queryAccountsCache(transaction.src_account_uuid, function (account) {
-					for (var j in settings.transactions) {
-						if (settings.transactions[j].src_account_uuid == account.uuid) {
-							settings.transactions[j].src = account.username;
-						}
-					}
-					settings.$forceUpdate();
-				});
-				queryAccountsCache(transaction.dest_account_uuid, function (account) {
-					for (var j in settings.transactions) {
-						if (settings.transactions[j].dest_account_uuid == account.uuid) {
-							settings.transactions[j].dest = account.username;
-						}
-					}
-					settings.$forceUpdate();
-				});
-			}
 		});
 	},
   filters: {
