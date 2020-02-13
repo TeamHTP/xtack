@@ -79,7 +79,7 @@ var commentsApp = new Vue({
             }
           });*/
 
-          queryAccountsCache(comment.author_uuid, function (account) {
+          queryAccountsCache(commentsApp.commentsList[i].author_uuid, function (account) {
             for (var j = 0; j < commentsApp.commentsList.length; j++) {
               if (commentsApp.commentsList[j].author_uuid == account.uuid) {
                 commentsApp.commentsList[j].author = account.username;
