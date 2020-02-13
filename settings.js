@@ -24,6 +24,23 @@ var settings = new Vue({
 		});
 		getApi(`/transactions`, '', function (data, status) {
 			settings.transactions = JSON.parse(data);
+			for (var i in settings.transactions) {
+				var transaction = settings.transactions[i];
+				queryAccountsCache(transaction.src_account_uuid, function (account) {
+					for (var j in settings.transactions) {
+						if (settings.transactions[j].src_account_uuid == account.uuid) {
+							settings.transactions[j].src = account.username;
+						}
+					}
+				});
+				queryAccountsCache(transaction.dest_account_uuid, function (account) {
+					for (var j in settings.transactions) {
+						if (settings.transactions[j].dest_account_uuid == account.uuid) {
+							settings.transactions[j].dest = account.username;
+						}
+					}
+				});
+			}
 		});
 	},
   filters: {
