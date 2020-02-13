@@ -82,6 +82,13 @@ var commentsApp = new Vue({
       }
     });
   },
+  methods: {
+    solution: function(answerUuid) {
+      getApi(`/questions/${question.question.uuid}/answer/${answerUuid}/accept`, '', function (data, status) {
+        console.log(data);
+      });
+    }
+  },
   filters: {
     convert: function (value) {
       return moment(value, 'x').fromNow();
