@@ -17,7 +17,7 @@ var question = new Vue({
             commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
             clearInterval(opUpdateInterval);
           }
-        }, 500);
+        }, 100);
         if (menuApp.account_uuid.length > 0) {
           comment.isOp = question.question.author_uuid == menuApp.account_uuid;
           commentsApp.isOp = question.question.author_uuid == menuApp.account_uuid;
