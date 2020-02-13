@@ -32,6 +32,7 @@ var settings = new Vue({
 							settings.transactions[j].src = account.username;
 						}
 					}
+					settings.$forceUpdate();
 				});
 				queryAccountsCache(transaction.dest_account_uuid, function (account) {
 					for (var j in settings.transactions) {
@@ -39,6 +40,7 @@ var settings = new Vue({
 							settings.transactions[j].dest = account.username;
 						}
 					}
+					settings.$forceUpdate();
 				});
 			}
 		});
