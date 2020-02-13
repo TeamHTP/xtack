@@ -38,3 +38,23 @@ function isEmailValid(mail) {
 }
 
 var accountsCache = {};
+function queryAccountsCache(uuid, callback) {
+	if (typeof accountsCache[uuid] === 'undefined') {
+		accountsCache[uuid] = {};
+		accountsCache[uuid].callbackQueue = [ callback ];
+		getApi(`/account/${uuid}`, '', function(data, status) {
+			if (status === 200) {
+				accountsCache[uuid].account = JSON.parse(data);
+				for (var i in accountsCache[uuid].callbackQueue) {
+					accountsCache[uuid].callbackQueue[i](accountsCache[uuid].account);
+				}
+			}
+		});
+	}
+	else if (typeof accountsCache[uuid].account === 'undefined') {
+		accountsCache[uuid].callbackQueue.push(callback);
+	}
+	else {
+		callback(accountsCache[uuid].account);
+	}
+}

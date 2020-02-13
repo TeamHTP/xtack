@@ -7,8 +7,8 @@ var question = new Vue({
     getApi(`/question/${location.hash.substring(1)}`, '', function (data, status) {
       if (status === 200) {
         question.question = JSON.parse(data);
-        getApi(`/account/${question.question.author_uuid}`, '', function (data, status) {
-          question.question.author = JSON.parse(data).username;
+        queryAccountsCache(question.question.author_uuid, function (account) {
+          question.question.author = account.username;
           question.$forceUpdate();
         });
         var opUpdateInterval = setInterval(function () {
@@ -70,13 +70,18 @@ var commentsApp = new Vue({
       if (status === 200) {
         commentsApp.commentsList = JSON.parse(data);
         for (var i = 0; i < commentsApp.commentsList.length; i++) {
-          getApi(`/account/${commentsApp.commentsList[i].author_uuid}`, '', function (data2, status) {
+          /*getApi(`/account/${commentsApp.commentsList[i].author_uuid}`, '', function (data2, status) {
             for (var j = 0; j < commentsApp.commentsList.length; j++) {
               if (commentsApp.commentsList[j].author_uuid == JSON.parse(data2).uuid) {
                 commentsApp.commentsList[j].author = JSON.parse(data2).username;
                 commentsApp.$forceUpdate();
               }
             }
+          });*/
+
+          queryAccountsCache(commentsApp.commentsList[i].author_uuid, function (account) {
+            commentsApp.commentsList[i].author = account.username;
+            commentsApp.$forceUpdate();
           });
         }
         commentsApp.$forceUpdate();
