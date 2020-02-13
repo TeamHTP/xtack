@@ -49,7 +49,7 @@ var settings = new Vue({
 					settings.withdrawAddressError = 'Our servers encountered a problem while processing your withdraw.';
 				}
 				else if (status == 400) {
-					settings.withdrawAddressError = 'There was a problem withdrawing to this address. Please ensure that this address isn\'t invalid.';
+					settings.withdrawAddressError = JSON.parse(data).message || 'There was a problem withdrawing to this address. Please ensure that this address isn\'t invalid.';
 				}
 				else {
 					location.reload();
