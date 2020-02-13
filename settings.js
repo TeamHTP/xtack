@@ -9,7 +9,8 @@ var settings = new Vue({
 		withdrawAddressError: false,
 		withdrawConfirm: false,
 		withdrawConfirmError: false,
-		withdrawLoading: false
+		withdrawLoading: false,
+		transactions: []
 	},
 	created: function() {
 		getApi(`/account`, '', function (data, status) {
@@ -20,6 +21,9 @@ var settings = new Vue({
 		getApi(`/wallet`, '', function (data, status) {
 			settings.xaddress = JSON.parse(data).addresses.xaddress;
 			settings.raddress = JSON.parse(data).addresses.raddress;
+		});
+		getApi(`/transactions`, '', function (data, status) {
+			settings.transactions = JSON.parse(data);
 		});
 	},
 	methods: {

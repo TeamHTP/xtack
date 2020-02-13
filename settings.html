@@ -123,6 +123,31 @@
           </div>
         </form>
 
+        <h1>Transactions</h1>
+
+        <div>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Source</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="transaction in transactions">
+                <td>{{ transaction.timestamp }}</td>
+                <td>{{ transaction.src }}</td>
+                <td>{{ transaction.dest }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.drops / 1000000 }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
   </div>

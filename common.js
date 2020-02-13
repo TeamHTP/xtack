@@ -36,3 +36,5 @@ function postApi(endpoint, params, callback) {
 function isEmailValid(mail) {
 	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail);
 }
+
+var accountsCache = {};
