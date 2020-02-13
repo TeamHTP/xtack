@@ -156,7 +156,12 @@
                   <tr v-for="transaction in transactions">
                     <td>{{ transaction.timestamp | convert }}</td>
                     <td>{{ transaction.src }}</td>
-                    <td>{{ transaction.dest }}</td>
+                    <td v-if="typeof transaction.ripple_transaction_id === 'undefined">
+                      {{ transaction.dest }}
+                    </td>
+                    <td v-if="typeof transaction.ripple_transaction_id !== 'undefined">
+                      <a :href="`https://testnet.xrpl.org/transactions/${transaction.ripple_transaction_id}`" target="_blank" class="text-brand">Ripple Network</a>
+                    </td>
                     <td>{{ transaction.type }}</td>
                     <td>{{ transaction.drops / 1000000 }} XRP</td>
                   </tr>
