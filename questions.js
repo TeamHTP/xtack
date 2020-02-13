@@ -18,8 +18,12 @@ var questionsApp = new Vue({
           });*/
           var question = questionsApp.questions[i];
           queryAccountsCache(question.author_uuid, function (account) {
-            question.author = account.username;
-            questionsApp.$forceUpdate();
+            for (var j = 0; j < questionsApp.questions.length; j++) {
+              if (questionsApp.questions[j].author_uuid == JSON.parse(data2).uuid) {
+                questionsApp.questions[j].author = JSON.parse(data2).username;
+                questionsApp.$forceUpdate();
+              }
+            }
           });
         }
       }
