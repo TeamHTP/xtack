@@ -34,7 +34,7 @@ var questionsApp = new Vue({
       return moment(value, 'x').fromNow();
     },
     trim: function (value) {
-      return value.substring(0, 140) + '...';
+      return value.length > 140 ? value.substring(0, 137) + '...' : value;
     },
     url: function (value) {
       return 'question.html#' + value;
