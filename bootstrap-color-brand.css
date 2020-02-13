@@ -183,12 +183,12 @@ a.text-brand:hover, a.text-brand:focus {
 }
 
 .badge-brand-success {
-    color: #212529;
+    color: #fff;
     background-color: #67ab6f;
 }
 
 .badge-brand-success[href]:hover, .badge-brand-success[href]:focus {
-    color: #212529;
+    color: #fff;
     background-color: #4f8f56;
 }
 
