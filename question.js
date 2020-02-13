@@ -79,8 +79,9 @@ var commentsApp = new Vue({
             }
           });*/
 
-          queryAccountsCache(commentsApp.commentsList[i].author_uuid, function (account) {
-            commentsApp.commentsList[i].author = account.username;
+          var comment = commentsApp.commentsList[i];
+          queryAccountsCache(comment.author_uuid, function (account) {
+            comment.author = account.username;
             commentsApp.$forceUpdate();
           });
         }

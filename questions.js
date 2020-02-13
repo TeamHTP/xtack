@@ -16,9 +16,9 @@ var questionsApp = new Vue({
               }
             }
           });*/
-
-          queryAccountsCache(questionsApp.questions[i].author_uuid, function (account) {
-            questionsApp.questions[i].author = account.username;
+          var question = questionsApp.questions[i];
+          queryAccountsCache(question.author_uuid, function (account) {
+            question.author = account.username;
             questionsApp.$forceUpdate();
           });
         }
