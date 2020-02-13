@@ -55,6 +55,11 @@ var settings = new Vue({
 					location.reload();
 				}
 			});
+		},
+		copy: function (selector) {
+			var el = document.querySelector(`${selector}`);
+			el.select();
+			document.execCommand('copy');
 		}
 	}
 })

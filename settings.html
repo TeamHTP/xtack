@@ -87,7 +87,7 @@
           <div class="input-group">
             <input type="text" name="" id="x-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="xaddress" style="font-size: 16px; font-family: monospace;">
             <div class="input-group-append">
-              <button type="button" class="btn btn-brand">Copy</button>
+              <button type="button" class="btn btn-brand" v-on:click="copy('#x-depositAddressInput')">Copy</button>
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@
           <div class="input-group">
             <input type="text" name="" id="r-depositAddressInput" class="form-control" readonly value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" v-model="raddress" style="font-size: 16px; font-family: monospace;">
             <div class="input-group-append">
-              <button type="button" class="btn btn-brand">Copy</button>
+              <button type="button" class="btn btn-brand" v-on:click="copy('#r-depositAddressInput')">Copy</button>
             </div>
           </div>
           <small class="form-text text-muted">Some apps require a classic address. If you need to use a classic address, you <span style="font-weight: bold;">MUST</span> include the destination tag!</small>
