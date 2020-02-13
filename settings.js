@@ -2,6 +2,7 @@ var settings = new Vue({
 	el: '#settings',
 	data: {
 		email: '',
+		uuid: '',
 		username: '',
 		xaddress: '',
 		raddress: '',
@@ -15,6 +16,7 @@ var settings = new Vue({
 	created: function() {
 		getApi(`/account`, '', function (data, status) {
 			var account = JSON.parse(data);
+			settings.uuid = account.uuid;
 			settings.email = account.email;
 			settings.username = account.username;
 		});
@@ -26,6 +28,9 @@ var settings = new Vue({
 			settings.transactions = JSON.parse(data);
 			for (var i in settings.transactions) {
 				var transaction = settings.transactions[i];
+				if (transaction.src_account_uuid == settings.uuid) {
+					transaction.drops = -transaction.drops;
+				}
 				queryAccountsCache(transaction.src_account_uuid, function (account) {
 					for (var j in settings.transactions) {
 						if (settings.transactions[j].src_account_uuid == account.uuid) {
