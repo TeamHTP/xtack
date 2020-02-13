@@ -81,8 +81,8 @@ var commentsApp = new Vue({
 
           queryAccountsCache(comment.author_uuid, function (account) {
             for (var j = 0; j < commentsApp.commentsList.length; j++) {
-              if (commentsApp.commentsList[j].author_uuid == JSON.parse(data2).uuid) {
-                commentsApp.commentsList[j].author = JSON.parse(data2).username;
+              if (commentsApp.commentsList[j].author_uuid == account.uuid) {
+                commentsApp.commentsList[j].author = account.username;
                 commentsApp.$forceUpdate();
               }
             }
