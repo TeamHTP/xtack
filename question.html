@@ -69,7 +69,7 @@
           </div>
           
           <p v-if="question.body">{{ question.body }}</p>
-          <div class="loading-placeholder" style="width: 80%;" v-if="!question.body">&nbsp;</div>
+          <div class="loading-placeholder" style="width: 80%; margin-top: 1rem;" v-if="!question.body">&nbsp;</div>
         </div>
         <div id="commentsApp" v-cloak>
           <h5>{{ commentsList.length > 0 ? (commentsList.length + ' ') : '' }}Answers</h5>
