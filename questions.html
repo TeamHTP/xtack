@@ -83,9 +83,7 @@
             <hr>
             <a href="#" class="unlink">
               <h5><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></h5>
-              <div class="row justify-content-between">
-                <p><div class="loading-placeholder" style="width: 45%;">&nbsp;</div></p>
-              </div>
+              <p><div class="loading-placeholder" style="width: 45%;">&nbsp;</div></p>
               <p><div class="loading-placeholder" style="width: 80%;">&nbsp;</div></p>
             </a>
           </div>
@@ -94,10 +92,10 @@
             <a :href="question.uuid | url" class="unlink">
               <h5>{{ question.title }}</h5>
               <div class="row justify-content-between">
-                <div class="col-auto">
+                <div class="col-5">
                   <p>
                     <span v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</span>
-                    <div class="loading-placeholder" style="width: 70%;" v-if="question.author == null">&nbsp;</div>
+                    <span class="loading-placeholder" style="width: 50%;" v-if="question.author == null">&nbsp;</span>
                   </p>
                 </div>
                 <div class="col-auto">
