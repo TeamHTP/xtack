@@ -78,7 +78,7 @@
             <div class="row">
               <div class="col-9">
                 <p v-if="comment.author != null">Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
-                <p v-if="comment.author == null"><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></p>
+                <p v-if="comment.author == null"><div class="loading-placeholder" style="width: 70%;" v-if="comment.author == null">&nbsp;</div></p>
               </div>
               <div class="col-3">
                 <h5><span class="badge badge-brand-success float-right" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span></h5>
