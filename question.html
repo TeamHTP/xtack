@@ -56,16 +56,19 @@
         <div id="question" v-cloak>
           <h1>Question</h1>
           <hr>
-          <h4>{{ question.title }}</h4>
+          <h4 v-if="question.title">{{ question.title }}</h4>
+          <h4 v-if="!question.title" style="color: rgba(0, 0, 0, 0.1);">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</h4>
           <div class="row justify-content-between">
             <div class="col-auto">
-              <p>Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
+              <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
+              <p style="color: rgba(0, 0, 0, 0.1);" v-if="question.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
             </div>
-            <div class="col-auto">
+            <div class="col-auto" v-if="question.bounty_min">
               <h5><span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
             </div>
           </div>
-          <p>{{ question.body }}</p>
+          <p v-if="question.body">{{ question.body }}</p>
+          <p style="color: rgba(0, 0, 0, 0.1);" v-if="!question.body">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
         </div>
         <h1>Answers</h1>
         <hr>
