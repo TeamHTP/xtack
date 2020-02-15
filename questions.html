@@ -92,7 +92,7 @@
             <a :href="question.uuid | url" class="unlink">
               <h5>{{ question.title }}</h5>
               <div class="row justify-content-between">
-                <div class="col-5">
+                <div class="col-8">
                   <p>
                     <span v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</span>
                     <span class="loading-placeholder" style="width: 50%;" v-if="question.author == null">&nbsp;</span>

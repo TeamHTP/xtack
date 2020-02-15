@@ -59,16 +59,17 @@
           <h4 v-if="question.title">{{ question.title }}</h4>
           <h4 v-if="!question.title"><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></h4>
           <div class="row justify-content-between">
-            <div class="col-auto">
+            <div class="col-8">
               <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
+              <div class="loading-placeholder" style="width: 50%;" v-if="question.author == null">&nbsp;</div>
             </div>
             <div class="col-auto" v-if="question.bounty_min">
               <h5><span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
             </div>
           </div>
-          <p v-if="question.author == null"><div class="loading-placeholder" style="width: 45%;">&nbsp;</div></p>
+          
           <p v-if="question.body">{{ question.body }}</p>
-          <p v-if="!question.body"><div class="loading-placeholder" style="width: 80%;">&nbsp;</div></p>
+          <div class="loading-placeholder" style="width: 80%;" v-if="!question.body">&nbsp;</div>
         </div>
         <div id="commentsApp" v-cloak>
           <h5>{{ commentsList.length > 0 ? (commentsList.length + ' ') : '' }}Answers</h5>
