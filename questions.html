@@ -84,9 +84,7 @@
             <a href="#" class="unlink">
               <h5><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></h5>
               <div class="row justify-content-between">
-                <div class="col-auto">
-                  <p><div class="loading-placeholder" style="width: 45%;">&nbsp;</div></p>
-                </div>
+                <p><div class="loading-placeholder" style="width: 45%;">&nbsp;</div></p>
               </div>
               <p><div class="loading-placeholder" style="width: 80%;">&nbsp;</div></p>
             </a>
@@ -98,8 +96,8 @@
               <div class="row justify-content-between">
                 <div class="col-auto">
                   <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
-                  <p v-if="question.author == null"><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></p>
                 </div>
+                <p v-if="question.author == null"><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></p>
                 <div class="col-auto">
                   <h5><span class="badge badge-brand-success" v-if="question.accepted_answer_uuid != null">Solved</span> <span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
                 </div>
