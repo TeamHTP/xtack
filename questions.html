@@ -85,10 +85,10 @@
               <h5 style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.031em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</h5>
               <div class="row justify-content-between">
                 <div class="col-auto">
-                  <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.031em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+                  <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
                 </div>
               </div>
-              <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.031em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+              <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
             </a>
           </div>
           <div v-for="question in questions">
@@ -98,7 +98,7 @@
               <div class="row justify-content-between">
                 <div class="col-auto">
                   <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
-                  <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.031em;" v-if="question.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+                  <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;" v-if="question.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
                 </div>
                 <div class="col-auto">
                   <h5><span class="badge badge-brand-success" v-if="question.accepted_answer_uuid != null">Solved</span> <span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
