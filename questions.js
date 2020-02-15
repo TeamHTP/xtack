@@ -1,7 +1,8 @@
 var questionsApp = new Vue({
   el: '#questions',
   data: {
-    questions: []
+    questions: [],
+    loaded: false
   },
   created: function () {
     getApi('/question/list', '', function (data, status) {
@@ -26,6 +27,7 @@ var questionsApp = new Vue({
             }
           });
         }
+        questionsApp.loaded = true;
       }
     });
   },
