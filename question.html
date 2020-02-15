@@ -57,18 +57,18 @@
           <h1>Question</h1>
           <hr>
           <h4 v-if="question.title">{{ question.title }}</h4>
-          <h4 v-if="!question.title" style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.031em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</h4>
+          <h4 v-if="!question.title" style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.026em;">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</h4>
           <div class="row justify-content-between">
             <div class="col-auto">
               <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
-              <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;" v-if="question.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+              <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.005em;" v-if="question.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
             </div>
             <div class="col-auto" v-if="question.bounty_min">
               <h5><span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
             </div>
           </div>
           <p v-if="question.body">{{ question.body }}</p>
-          <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;" v-if="!question.body">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+          <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.005em;" v-if="!question.body">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
         </div>
         <h1>Answers</h1>
         <hr>
@@ -77,7 +77,7 @@
             <div class="row">
               <div class="col-9">
                 <p v-if="comment.author != null">Answered by {{ comment.author }}, {{ comment.timestamp | convert }}</p>
-                <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.021em;" v-if="comment.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
+                <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.005em;" v-if="comment.author == null">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
               </div>
               <div class="col-3">
                 <h5><span class="badge badge-brand-success float-right" v-if="comment.uuid == question.question.accepted_answer_uuid">Solution</span></h5>
