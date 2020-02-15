@@ -95,9 +95,11 @@
               <h5>{{ question.title }}</h5>
               <div class="row justify-content-between">
                 <div class="col-auto">
-                  <p v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</p>
+                  <p>
+                    <span v-if="question.author != null">Asked by {{ question.author }}, {{ question.timestamp | convert }}</span>
+                    <div class="loading-placeholder" style="width: 70%;" v-if="question.author == null">&nbsp;</div>
+                  </p>
                 </div>
-                <p v-if="question.author == null"><div class="loading-placeholder" style="width: 70%;">&nbsp;</div></p>
                 <div class="col-auto">
                   <h5><span class="badge badge-brand-success" v-if="question.accepted_answer_uuid != null">Solved</span> <span class="badge badge-brand">{{ question.bounty_min / 1000000 }} XRP</span></h5>
                 </div>
