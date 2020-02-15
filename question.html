@@ -71,7 +71,7 @@
           <p style="color: rgba(0, 0, 0, 0.1); letter-spacing: 0.005em;" v-if="!question.body">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</p>
         </div>
         <div id="commentsApp" v-cloak>
-          <h1>{{ commentsList.length > 0 ? (commentsList.length + ' ') : '' }}Answers</h1>
+          <h5>{{ commentsList.length > 0 ? (commentsList.length + ' ') : '' }}Answers</h5>
           <hr>
           <div v-for="comment in commentsList">
             <div class="row">
